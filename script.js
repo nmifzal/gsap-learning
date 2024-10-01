@@ -1,13 +1,24 @@
 var main = document.querySelector("#main");
 var cursor = document.querySelector("#cursor");
+var imageDiv = document.querySelector("#image");
 
 main.addEventListener("mousemove", (e) => {
-  cursor.style.top = e.pageY + "px";
-  cursor.style.left = e.pageX + "px";
-
   gsap.to(cursor, {
-    duration: 0.5,
-    x: e.pageX,
-    y: e.pageY,
+    x: e.x,
+    y: e.y,
+  });
+});
+
+imageDiv.addEventListener("mouseenter", (e) => {
+  cursor.innerHTML = "View More";
+  gsap.to(cursor, {
+    scale: 4,
+    backgroundColor: "#e0e0e086",
+  });
+});
+imageDiv.addEventListener("mouseleave", (e) => {
+  cursor.innerHTML = "View More";
+  gsap.to(cursor, {
+    scale: 1,
   });
 });
